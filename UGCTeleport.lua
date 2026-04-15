@@ -25,14 +25,11 @@ end
 for _, cp in ipairs(checkpoints) do
     if cp.num <= _G.CheckpointNumber then continue end
 
-    local dist = (cp.part.Position - hrp.Position).Magnitude
-    local duration = math.clamp(dist / 200, 0.1, 3)
-
     setCanTouch(false)
 
     local tween = TweenService:Create(
         hrp,
-        TweenInfo.new(duration, Enum.EasingStyle.Linear),
+        TweenInfo.new(_G.TweenSpeed, Enum.EasingStyle.Linear),
         {CFrame = cp.part.CFrame * CFrame.new(0, 3, 0)}
     )
 
